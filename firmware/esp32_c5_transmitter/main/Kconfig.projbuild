@@ -1,0 +1,43 @@
+menu "CSI Transmitter Configuration"
+
+    config ESP_WIFI_SSID
+        string "WiFi SSID"
+        default "SmartAlarm_CSI_TX"
+        help
+            SSID (network name) for the CSI transmitter to create.
+
+    config ESP_WIFI_PASSWORD
+        string "WiFi Password"
+        default "csicsicsi"
+        help
+            WiFi password (WPA or WPA2) for the CSI transmitter.
+
+    config ESP_WIFI_CHANNEL
+        int "WiFi Channel"
+        range 1 13
+        default 6
+        help
+            WiFi channel (1-13) for the CSI transmitter.
+
+    config TX_PACKET_INTERVAL_MS
+        int "Packet Interval (ms)"
+        range 10 1000
+        default 50
+        help
+            Interval between CSI packets in milliseconds.
+
+    config TX_PACKET_SIZE
+        int "Packet Size"
+        range 64 1500
+        default 256
+        help
+            Size of each CSI packet in bytes.
+
+    config ESP_WIFI_TX_POWER
+        int "WiFi TX Power (dBm)"
+        range 0 20
+        default 20
+        help
+            WiFi transmit power in dBm.
+
+endmenu
