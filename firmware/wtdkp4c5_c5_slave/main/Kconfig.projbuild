@@ -1,0 +1,28 @@
+menu "C5 SDIO Slave Configuration"
+
+    config TX_AP_SSID
+        string "Target AP SSID"
+        default "SmartAlarm_CSI_TX"
+        help
+            SSID of the transmitter AP to connect to.
+
+    config TX_AP_PASSWORD
+        string "Target AP Password"
+        default "csicsicsi"
+        help
+            Password of the transmitter AP.
+
+    config SDIO_BLOCK_SIZE
+        int "SDIO Block Size"
+        default 512
+        help
+            SDIO block size for data transfer.
+
+    config CSI_QUEUE_SIZE
+        int "CSI Queue Size"
+        range 5 50
+        default 20
+        help
+            Size of the CSI data queue.
+
+endmenu

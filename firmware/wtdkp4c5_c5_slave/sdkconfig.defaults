@@ -1,0 +1,18 @@
+# ESP32-C5 SDIO Slave Configuration
+
+# Target
+CONFIG_IDF_TARGET="esp32c5"
+
+# WiFi Configuration
+CONFIG_TX_AP_SSID="SmartAlarm_CSI_TX"
+CONFIG_TX_AP_PASSWORD="csicsicsi"
+
+# SDIO Configuration
+CONFIG_SDIO_BLOCK_SIZE=512
+CONFIG_CSI_QUEUE_SIZE=20
+
+# Enable WiFi and CSI
+CONFIG_ESP_WIFI_ENABLED=y
+
+# Log level
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y
