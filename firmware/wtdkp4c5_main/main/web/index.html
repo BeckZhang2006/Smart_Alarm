@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能CSI闹铃 - Smart Alarm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌅 智能CSI闹铃</h1>
+            <p class="subtitle">基于WiFi CSI人体检测</p>
+        </header>
+
+        <main>
+            <!-- 状态卡片 -->
+            <section class="card status-card">
+                <h2>📊 当前状态</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="label">检测状态:</span>
+                        <span id="detection-status" class="value unknown">检测中...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">置信度:</span>
+                        <span id="confidence" class="value">--%</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">下次响铃:</span>
+                        <span id="next-alarm" class="value">--:--</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">WiFi信号:</span>
+                        <span id="wifi-signal" class="value">-- dBm</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 闹钟设置 -->
+            <section class="card alarm-card">
+                <h2>⏰ 闹钟设置</h2>
+                <div class="alarm-setup">
+                    <div class="time-input-group">
+                        <label for="alarm-hour">小时</label>
+                        <select id="alarm-hour">
+                            <!-- 由JS填充 -->
+                        </select>
+                    </div>
+                    <span class="time-separator">:</span>
+                    <div class="time-input-group">
+                        <label for="alarm-minute">分钟</label>
+                        <select id="alarm-minute">
+                            <!-- 由JS填充 -->
+                        </select>
+                    </div>
+                    <button id="set-alarm-btn" class="btn btn-primary">设置闹钟</button>
+                </div>
+                
+                <div class="alarm-list">
+                    <h3>已设置的闹钟</h3>
+                    <ul id="alarm-list">
+                        <!-- 由JS动态填充 -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 贪睡设置 -->
+            <section class="card snooze-card">
+                <h2>😴 贪睡设置</h2>
+                <div class="snooze-options">
+                    <label for="snooze-interval">贪睡间隔:</label>
+                    <select id="snooze-interval">
+                        <option value="180">3分钟</option>
+                        <option value="300" selected>5分钟</option>
+                        <option value="600">10分钟</option>
+                        <option value="900">15分钟</option>
+                    </select>
+                    <p class="hint">当检测到床上有人时，将在设定时间后再次响铃</p>
+                </div>
+            </section>
+
+            <!-- 手动控制 -->
+            <section class="card control-card">
+                <h2>🎛️ 手动控制</h2>
+                <div class="control-buttons">
+                    <button id="test-alarm-btn" class="btn btn-secondary">测试响铃</button>
+                    <button id="stop-alarm-btn" class="btn btn-danger">停止响铃</button>
+                    <button id="reset-detector-btn" class="btn btn-secondary">重置检测器</button>
+                </div>
+            </section>
+
+            <!-- 检测阈值 -->
+            <section class="card threshold-card">
+                <h2>🔧 检测阈值</h2>
+                <div class="threshold-control">
+                    <label for="detection-threshold">人体检测灵敏度:</label>
+                    <input type="range" id="detection-threshold" min="10" max="100" value="30">
+                    <span id="threshold-value">30</span>
+                    <p class="hint">数值越小越灵敏，越大越不容易误报</p>
+                </div>
+            </section>
+
+            <!-- 日志 -->
+            <section class="card log-card">
+                <h2>📋 系统日志</h2>
+                <div id="log-container" class="log-container">
+                    <!-- 由JS填充 -->
+                </div>
+                <button id="clear-log-btn" class="btn btn-small">清空日志</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>基于启明云端 WTDKP4C5-S1 开发板 | ESP32-P4 + ESP32-C5</p>
+            <p id="connection-status" class="connection-status disconnected">⚠ 未连接</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

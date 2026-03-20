@@ -1,0 +1,12 @@
+## ESP-Hosted 组件依赖
+## 用于ESP32-P4通过板载ESP32-C5获得WiFi功能
+
+dependencies:
+  espressif/esp_wifi_remote:
+    version: ">=0.10,<2.0"
+    rules:
+      - if: "target in [esp32p4, esp32h2]"
+  espressif/esp_hosted:
+    version: "*"
+    rules:
+      - if: "target in [esp32p4, esp32h2]"

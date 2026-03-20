@@ -1,0 +1,64 @@
+menu "SmartAlarm Configuration"
+
+    config ESP_WIFI_SSID
+        string "WiFi AP SSID"
+        default "SmartAlarm_AP"
+        help
+            SSID (network name) for the device AP mode.
+
+    config ESP_WIFI_PASSWORD
+        string "WiFi AP Password"
+        default "12345678"
+        help
+            WiFi password for the device AP mode.
+
+    config WEB_SERVER_PORT
+        int "Web Server Port"
+        range 1 65535
+        default 80
+        help
+            Port number for the web server.
+
+    config MAX_ALARMS
+        int "Maximum Alarms"
+        range 1 20
+        default 10
+        help
+            Maximum number of alarms that can be set.
+
+    config SNOOZE_INTERVAL_MS
+        int "Snooze Interval (ms)"
+        range 60000 900000
+        default 300000
+        help
+        help
+            Snooze interval in milliseconds (default 5 minutes).
+
+    config ALARM_DURATION_MS
+        int "Alarm Duration (ms)"
+        range 10000 300000
+        default 60000
+        help
+            How long the alarm rings before auto-snooze.
+
+    config DEFAULT_DETECTION_THRESHOLD
+        int "Default Detection Threshold"
+        range 10 100
+        default 30
+        help
+            Default threshold for person detection.
+
+    config CSI_HISTORY_SIZE
+        int "CSI History Size"
+        range 10 100
+        default 50
+        help
+            Number of CSI samples to keep in history.
+
+    config ENABLE_DEBUG_LOG
+        bool "Enable Debug Logging"
+        default n
+        help
+            Enable verbose debug logging.
+
+endmenu
